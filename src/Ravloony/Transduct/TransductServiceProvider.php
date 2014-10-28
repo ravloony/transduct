@@ -20,7 +20,7 @@ class TransductServiceProvider extends ServiceProvider {
 	{
 		$this->app['transduct'] = $this->app->share(function($app)
 		{
-			return new LaravelTransduct;
+			return new Transduct;
 		});
 	}
 
