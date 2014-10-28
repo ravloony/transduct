@@ -1,8 +1,8 @@
-<?php namespace Ravloony\LaravelTransduct;
+<?php namespace Ravloony\Transduct;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelTransductServiceProvider extends ServiceProvider {
+class TransductServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -20,7 +20,7 @@ class LaravelTransductServiceProvider extends ServiceProvider {
 	{
 		$this->app['transduct'] = $this->app->share(function($app)
 		{
-			return new LaravelTransduct;
+			return new Transduct;
 		});
 	}
 

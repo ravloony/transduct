@@ -1,6 +1,6 @@
 <?php
 
-namespace Ravloony\LaravelTransduct;
+namespace Ravloony\Transduct;
 
 use Cache;
 use App;
@@ -8,7 +8,7 @@ use File;
 use Log;
 use Config;
 
-class LaravelTransduct {
+class Transduct {
 	/**
 	 * The key used to cache the JSON messages.
 	 *
