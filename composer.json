@@ -1,0 +1,21 @@
+{
+    "name": "ravloony/laravel-transduct",
+    "description": "Transform a language directory into a single JSON array",
+	"license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Thomas Macdonald",
+            "email": "tm@thomas-macdonald.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ravloony\\LaravelTransduct": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
