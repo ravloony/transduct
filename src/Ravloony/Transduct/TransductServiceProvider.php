@@ -1,8 +1,8 @@
-<?php namespace Ravloony\LaravelTransduct;
+<?php namespace Ravloony\Transduct;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelTransductServiceProvider extends ServiceProvider {
+class TransductServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.

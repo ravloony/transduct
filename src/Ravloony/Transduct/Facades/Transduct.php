@@ -1,6 +1,6 @@
 <?php
 
-namespace Ravloony\LaravelTransduct\Facades;
+namespace Ravloony\Transduct\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
