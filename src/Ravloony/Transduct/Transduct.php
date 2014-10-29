@@ -5,7 +5,6 @@ namespace Ravloony\Transduct;
 use Cache;
 use App;
 use File;
-use Log;
 use Config;
 
 class Transduct {
@@ -41,21 +40,17 @@ class Transduct {
 	}
 
 	private function buildLangArray($directory) {
-		Log::info('Building array from directory ' . $directory);
 		$subDirectories = File::directories($directory);
-		Log::info('Found subdirectories', $subDirectories);
 		$lang = [];
 		foreach($subDirectories as $subDirectory) {
 			$slug = basename($subDirectory);
 			$lang[$slug] = $this->buildLangArray($subDirectory);
 		}
 		$files = File::files($directory);
-		Log::info('Found files', $files);
 		foreach($files as $file) {
 			$slug = basename($file, '.php');
 			$lang[$slug] = File::getRequire($file);
 		}
-		Log::info('Completed array:', $lang);
 		return $lang;
 	}
 }
