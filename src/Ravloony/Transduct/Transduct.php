@@ -15,6 +15,12 @@ class Transduct {
 	 */
 	const CACHE_KEY = 'transduct-json-lang-export';
 
+	/**
+	 *
+	 * The cache tag so we can flush from the app
+	 */
+	const CACHE_TAG = 'ravloony-transduct';
+
 
 	/**
 	 * Get a JSON representation of a lang dir (recursive).
@@ -24,10 +30,10 @@ class Transduct {
 	 */
     public function get($directory) {
 		$directoryKey = self::CACHE_KEY.$directory;
-		if (!Cache::has($directoryKey) || Config::get('app.debug')) {
+		if (!Cache::tags(self::CACHE_TAG)->has($directoryKey) || Config::get('app.debug')) {
 			$this->refreshCache($directory, $directoryKey);
 		}
-		return Cache::get($directoryKey);
+		return Cache::tags(self::CACHE_TAG)->get($directoryKey);
 	}
 
 	private function refreshCache($directory, $directoryKey) {
@@ -37,7 +43,8 @@ class Transduct {
 		if (Config::get('app.debug')) {
 			$flags |= JSON_PRETTY_PRINT;
 		}
-		Cache::forever($directoryKey, json_encode($langs, $flags));
+		$encoded_langs = json_encode($langs, $flags);
+		Cache::tags(self::CACHE_TAG)->forever($directoryKey, $encoded_langs);
 	}
 
 	private function buildLangArray($directory) {
