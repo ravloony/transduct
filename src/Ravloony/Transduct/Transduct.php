@@ -36,6 +36,10 @@ class Transduct {
 		return Cache::tags(self::CACHE_TAG)->get($directoryKey);
 	}
 
+	public function flush() {
+		Cache::tags(self::CACHE_TAG)->flush();
+	}
+
 	private function refreshCache($directory, $directoryKey) {
 		$locale = App::getLocale();
 		$langs = $this->buildLangArray( app_path() . '/lang/' . $locale . '/' . $directory );
