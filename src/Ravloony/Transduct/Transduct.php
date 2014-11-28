@@ -52,6 +52,9 @@ class Transduct {
 	}
 
 	private function buildLangArray($directory) {
+		if (!File::isDirectory($directory)) {
+			return [];
+		}
 		$subDirectories = File::directories($directory);
 		$lang = [];
 		foreach($subDirectories as $subDirectory) {
