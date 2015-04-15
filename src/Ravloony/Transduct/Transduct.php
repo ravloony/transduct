@@ -29,9 +29,10 @@ class Transduct {
 	 * @return array recursive array containing all the arrays of all the lang files in $directory.
 	 */
     public function get($directory) {
-		$directoryKey = self::CACHE_KEY.$directory;
+		$locale = App::getLocale();
+		$directoryKey = self::CACHE_KEY.$directory.$locale;
 		if (!Cache::tags(self::CACHE_TAG)->has($directoryKey) || Config::get('app.debug')) {
-			$this->refreshCache($directory, $directoryKey);
+			$this->refreshCache($directory, $directoryKey, $locale);
 		}
 		return Cache::tags(self::CACHE_TAG)->get($directoryKey);
 	}
@@ -40,8 +41,7 @@ class Transduct {
 		Cache::tags(self::CACHE_TAG)->flush();
 	}
 
-	private function refreshCache($directory, $directoryKey) {
-		$locale = App::getLocale();
+	private function refreshCache($directory, $directoryKey, $locale) {
 		$langs = $this->buildLangArray( app_path() . '/lang/' . $locale . '/' . $directory );
 		$flags = JSON_HEX_QUOT | JSON_HEX_APOS | JSON_HEX_AMP;
 		if (Config::get('app.debug')) {
