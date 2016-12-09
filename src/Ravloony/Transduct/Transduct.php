@@ -42,7 +42,7 @@ class Transduct {
 	}
 
 	private function refreshCache($directory, $directoryKey, $locale) {
-		$langs = $this->buildLangArray( app_path() . '/lang/' . $locale . '/' . $directory );
+		$langs = $this->buildLangArray( base_path() . '/resources/lang/' . $locale . '/' . $directory );
 		$flags = JSON_HEX_QUOT | JSON_HEX_APOS | JSON_HEX_AMP;
 		if (Config::get('app.debug')) {
 			$flags |= JSON_PRETTY_PRINT;
