@@ -18,7 +18,7 @@ class TransductServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['transduct'] = $this->app->singleton(function($app)
+		$this->app['transduct'] = $this->app->singleton('transduct', function($app)
 		{
 			return new Transduct;
 		});
